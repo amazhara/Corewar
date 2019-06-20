@@ -14,13 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	g_dump = -1;
 	parse(ac - 1, av + 1);
 	mem_init();
-	if (g_ivan)
-	{
-		g_vl = 0;
-		g_dump = -1;
-	}
 	main_cycle();
 }

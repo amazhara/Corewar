@@ -19,6 +19,7 @@ void	end_game(void)
 {
 	ft_printf("Contestant %d, \"%s\", has won !\n", g_last_live->id,
 		g_last_live->name);
+//	system("leaks -q Corewar");
 	exit(0);
 }
 

@@ -36,5 +36,5 @@ void	aff(t_op_inf *inf)
 
 	reg = inf->carr->regs[byte_get(inf->pos_read, 1)];
 	if (g_a)
-		ft_printf("%c", (char)reg);
+		ft_printf("Aff: %c\n", reg);
 }

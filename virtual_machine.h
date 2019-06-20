@@ -147,7 +147,7 @@ int					g_cycles_die;
 int					g_carr_num;
 int					g_lives_count;
 int					g_checks_count;
-int					g_ivan;
+int					g_vis;
 int					g_a;
 t_vl				g_vl;
 unsigned char		g_mem[MEM_SIZE];

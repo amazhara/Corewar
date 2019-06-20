@@ -15,6 +15,13 @@
 int			g_n[4];
 int			g_id_big;
 
+void		vis_case(void)
+{
+	g_dump = -1;
+	g_a = 0;
+	g_vl = 0;
+}
+
 t_champ		*champ_read(char *path)
 {
 	int			fd;
@@ -54,31 +61,40 @@ void		champ_add(t_champ *champ, int id)
 		g_id_big = id + 1;
 }
 
+void		champ_parse(char **av, int i)
+{
+	int		n_i;
+
+	n_i = 0;
+	while (g_n[n_i])
+		n_i++;
+	champ_add(champ_read(av[i]), n_i);
+}
+
 void		parse(int ac, char **av)
 {
 	int		i;
-	int		n_i;
 
+	g_dump = -1;
 	i = -1;
-	n_i = 0;
 	while (av[++i])
 	{
 		if (!ft_strcmp(av[i], "-dump"))
 			flag_dump(av, &i);
 		else if (!ft_strcmp(av[i], "-v"))
 			flag_v(av, &i);
-		else if (!ft_strcmp(av[i], "-IVAN"))
-			g_ivan = 1;
+		else if (!ft_strcmp(av[i], "-a"))
+			g_a = 1;
+		else if (!ft_strcmp(av[i], "-vis"))
+			g_vis = 1;
 		else if (!ft_strcmp(av[i], "-n"))
 			flag_n(av, &i);
 		else
-		{
-			while (g_n[n_i])
-				n_i++;
-			champ_add(champ_read(av[i]), n_i);
-		}
+			champ_parse(av, i);
 		if (g_champs_count > MAX_PLAYERS)
 			error("To much champions");
 	}
 	g_champs_count < g_id_big ? error("Unnecessary -n index") : 0;
+	if (g_vis)
+		vis_case();
 }
