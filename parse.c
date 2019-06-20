@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/20 15:20:41 by amazhara          #+#    #+#             */
+/*   Updated: 2019/06/20 16:57:00 by amazhara         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "virtual_machine.h"
 
-int 	g_n[4];
-int 	g_id_big;
+int			g_n[4];
+int			g_id_big;
 
-t_champ			*champ_read(char *path)
+t_champ		*champ_read(char *path)
 {
 	int			fd;
 	t_champ		*res;
@@ -42,15 +54,13 @@ void		champ_add(t_champ *champ, int id)
 		g_id_big = id + 1;
 }
 
-
-void	parse(int ac, char **av)
+void		parse(int ac, char **av)
 {
 	int		i;
 	int		n_i;
 
 	i = -1;
 	n_i = 0;
-	g_dump = -1;
 	while (av[++i])
 	{
 		if (!ft_strcmp(av[i], "-dump"))

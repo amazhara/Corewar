@@ -6,7 +6,7 @@
 /*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 10:00:46 by amazhara          #+#    #+#             */
-/*   Updated: 2019/04/25 13:46:02 by amazhara         ###   ########.fr       */
+/*   Updated: 2019/06/20 17:21:46 by amazhara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int					ft_isnum(char *str);
 ******************								******************
 */
 
-ssize_t	ft_read(int fd, void *buff, size_t size);
+ssize_t				ft_read(int fd, void *buff, size_t size);
 int					ft_sqrt(int n);
 int					strchr_count(char *line, char symbol);
 size_t				ft_strlen(const char *str);

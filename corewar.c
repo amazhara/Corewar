@@ -1,23 +1,36 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   corewar.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/20 15:48:35 by amazhara          #+#    #+#             */
+/*   Updated: 2019/06/20 17:10:26 by amazhara         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "virtual_machine.h"
 
-int 		g_delete_count;
+int			g_delete_count;
 int			g_check_time;
 
-void	end_game()
+void	end_game(void)
 {
-	ft_printf("Contestant %d, \"%s\", has won !\n", g_last_live->id, g_last_live->name);
+	ft_printf("Contestant %d, \"%s\", has won !\n", g_last_live->id,
+		g_last_live->name);
 	exit(0);
 }
 
-void	check()
+void	check(void)
 {
 	ssize_t i;
 
 	i = g_carriers->len;
 	g_checks_count++;
 	while (i--)
-		if (g_cycles - g_carriers->carr[i]->cycles_id >= g_cycles_die || g_cycles_die <= 0)
+		if (g_cycles - g_carriers->carr[i]->cycles_id >= g_cycles_die
+			|| g_cycles_die <= 0)
 		{
 			if (g_carriers->carr[i]->dead)
 				continue;
@@ -61,13 +74,13 @@ void	code_execute(t_carrier *carr)
 		carr->pos = inf.zjmp_pos;
 }
 
-void	main_cycle()
+void	main_cycle(void)
 {
 	ssize_t i;
 
 	g_cycles_die = CYCLE_TO_DIE;
 	dump();
-	while ( 1 )
+	while (42)
 	{
 		i = g_carriers->len;
 		g_cycles++;
@@ -84,7 +97,6 @@ void	main_cycle()
 			if (g_carriers->carr[i]->cycles_to_exec == 0)
 				code_execute(g_carriers->carr[i]);
 		}
-//		ft_printf("num ---> %d\n", g_carr_num);
 		dump();
 		if ((g_check_time == g_cycles_die) || g_cycles_die <= 0)
 			check();

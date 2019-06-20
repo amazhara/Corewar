@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_ld.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/20 15:20:41 by amazhara          #+#    #+#             */
+/*   Updated: 2019/06/20 16:31:19 by amazhara         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "virtual_machine.h"
-#include "stdio.h"
 
 void	ld(t_op_inf *inf)
 {
@@ -36,10 +47,14 @@ void	ldi(t_op_inf *inf)
 	args[1] = operation_type_ld(inf, 1, args_num[1], 2);
 	if (g_vl & (uint)s_operations)
 	{
-		ft_printf("P %4d | ldi %d %d r%d\n", inf->carr->id, args[0], args[1], args[2]);
-		ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", args[0], args[1], args[0] + args[1], inf->carr->pos - g_mem + ((args[0] + args[1]) % IDX_MOD));
+		ft_printf("P %4d | ldi %d %d r%d\n", inf->carr->id, args[0],
+			args[1], args[2]);
+		ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n",
+			args[0], args[1], args[0] + args[1],
+			inf->carr->pos - g_mem + ((args[0] + args[1]) % IDX_MOD));
 	}
-	inf->carr->regs[args[2]] = byte_get(inf->carr->pos + (args[0] + args[1]) % IDX_MOD, 4);
+	inf->carr->regs[args[2]] = byte_get(inf->carr->pos +
+		(args[0] + args[1]) % IDX_MOD, 4);
 }
 
 void	lld(t_op_inf *inf)
@@ -77,8 +92,12 @@ void	lldi(t_op_inf *inf)
 	args[1] = operation_type_ld(inf, 1, args_num[1], 2);
 	if (g_vl & (uint)s_operations)
 	{
-		ft_printf("P %4d | lldi %d %d r%d\n", inf->carr->id, args[0], args[1], args[2]);
-		ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", args[0], args[1], args[0] + args[1], inf->carr->pos - g_mem + (args[0] + args[1]));
+		ft_printf("P %4d | lldi %d %d r%d\n", inf->carr->id,
+			args[0], args[1], args[2]);
+		ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n",
+			args[0], args[1], args[0] + args[1],
+			inf->carr->pos - g_mem + (args[0] + args[1]));
 	}
-	inf->carr->regs[args[2]] = byte_get(inf->carr->pos + (args[0] + args[1]), 4);
+	inf->carr->regs[args[2]] = byte_get(inf->carr->pos +
+		(args[0] + args[1]), 4);
 }

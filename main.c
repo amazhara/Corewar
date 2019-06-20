@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/20 15:56:11 by amazhara          #+#    #+#             */
+/*   Updated: 2019/06/20 16:56:21 by amazhara         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "virtual_machine.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
+	g_dump = -1;
 	parse(ac - 1, av + 1);
 	mem_init();
 	if (g_ivan)
@@ -10,7 +23,4 @@ int main(int ac, char **av)
 		g_dump = -1;
 	}
 	main_cycle();
-//	mem_print();
-//	system("leaks -q Corewar");
-//	mem_print();
 }

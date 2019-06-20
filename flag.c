@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flag.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/20 15:20:41 by amazhara          #+#    #+#             */
+/*   Updated: 2019/06/20 17:09:07 by amazhara         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "virtual_machine.h"
 
 void		flag_n(char **av, int *i)
 {
-	int 	id;
+	int		id;
 
 	if (!ft_isnum(av[++*i]))
 		error("Wrong -n argument");
@@ -31,34 +43,16 @@ void		dump(void)
 	int j;
 
 	if (g_dump != g_cycles)
-		return;
+		return ;
 	i = 0;
 	while (i < MEM_SIZE)
 	{
 		ft_printf("0x%.4x : ", i);
 		j = -1;
-		while (++j < 64)
+		while (++j < 32)
 			ft_printf("%.2x ", g_mem[i + j]);
 		ft_printf("\n");
-		i += 64;
+		i += 32;
 	}
 	exit(0);
 }
-
-//
-//int	i;
-//int	j;
-//
-//i = 0;
-//while (i < MEM_SIZE)
-//{
-//ft_printf("%.4p : ", i);
-//j = 0;
-//while (j < print_mode)
-//{
-//ft_printf("%.2x ", arena[i + j]);
-//j++;
-//}
-//ft_printf("\n");
-//i += print_mode;
-//}

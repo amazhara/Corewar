@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_live_aff.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/20 15:20:41 by amazhara          #+#    #+#             */
+/*   Updated: 2019/06/20 16:32:26 by amazhara         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "virtual_machine.h"
 
 void	live(t_op_inf *inf)
@@ -20,9 +32,9 @@ void	live(t_op_inf *inf)
 
 void	aff(t_op_inf *inf)
 {
-	int 	reg;
+	int		reg;
 
 	reg = inf->carr->regs[byte_get(inf->pos_read, 1)];
-	if (g_a) // Need to parse
+	if (g_a)
 		ft_printf("%c", (char)reg);
 }

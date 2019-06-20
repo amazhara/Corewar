@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pars_and_process.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazhara <amazhara@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:16:47 by amazhara          #+#    #+#             */
-/*   Updated: 2018/12/23 14:08:16 by amazhara         ###   ########.fr       */
+/*   Updated: 2019/06/20 17:34:14 by amazhara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-void	process_b(t_printf *p, va_list ap)
-{
-	char					*out;
-	int 					len;
-	uintmax_t				arg;
-
-	arg = check_type_unsigned(p, ap);
-	out = ft_itoa_base(arg, 2, 0);
-	write (1, out, ft_strlen(out));
-}
 
 int		process_printf_type(const char *str, t_printf *p, va_list *ap, int i)
 {
@@ -48,8 +37,6 @@ int		process_printf_type(const char *str, t_printf *p, va_list *ap, int i)
 		process_c(p, *ap);
 	if (c == '%')
 		process_pc(p);
-	if (c == 'b')
-		process_b(p, *ap);
 	return (++i);
 }
 

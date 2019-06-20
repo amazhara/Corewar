@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   memory.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/20 15:20:41 by amazhara          #+#    #+#             */
+/*   Updated: 2019/06/20 16:22:17 by amazhara         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "virtual_machine.h"
 
 int		mem_pos(int move)
@@ -9,12 +21,11 @@ int		mem_pos(int move)
 
 void	mem_add(unsigned char *carr_pos, int pos, void *bytes, int size)
 {
-	int 			sum;
+	int				i;
+	int				sum;
 	unsigned char	*fill;
 	unsigned char	*dest;
 	unsigned char	*end;
-
-	int i;
 
 	i = -1;
 	fill = bytes;
@@ -32,11 +43,10 @@ void	mem_add(unsigned char *carr_pos, int pos, void *bytes, int size)
 	}
 }
 
-
-void 	mem_init()
+void	mem_init(void)
 {
-	int 		pos;
-	int 		i;
+	int			pos;
+	int			i;
 
 	pos = 0;
 	i = -1;

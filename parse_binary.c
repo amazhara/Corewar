@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_binary.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/20 15:20:41 by amazhara          #+#    #+#             */
+/*   Updated: 2019/06/20 17:06:34 by amazhara         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "virtual_machine.h"
 
 int16_t		byte_swap16(uint32_t number)
@@ -12,7 +24,7 @@ int16_t		byte_swap16(uint32_t number)
 	return (res);
 }
 
-int 		byte_swap32(uint32_t number)
+int			byte_swap32(uint32_t number)
 {
 	uint32_t	res;
 	uint8_t		*tmp;
@@ -31,7 +43,7 @@ uint		byte_get(void *src, size_t size)
 	uint	res;
 	int		skip;
 	char	*tmp;
-	int 	i;
+	int		i;
 
 	res = 0;
 	skip = 0;

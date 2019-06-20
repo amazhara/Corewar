@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_st.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/20 15:20:41 by amazhara          #+#    #+#             */
+/*   Updated: 2019/06/20 16:33:25 by amazhara         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "virtual_machine.h"
 
 int		operation_type_sti(t_op_inf *inf, int ind, int args_num)
 {
-	int 			arg_type;
+	int				arg_type;
 	unsigned char	*pos;
 
 	pos = inf->carr->pos + 3;
@@ -20,7 +32,7 @@ int		operation_type_sti(t_op_inf *inf, int ind, int args_num)
 void	st(t_op_inf *inf)
 {
 	int				move_size;
-	int 			byte;
+	int				byte;
 	int				reg_id;
 	short			arg_2;
 
@@ -54,8 +66,11 @@ void	sti(t_op_inf *inf)
 	args[1] = operation_type_sti(inf, 1, args_num[1]);
 	if (g_vl & (uint)s_operations)
 	{
-		ft_printf("P %4d | sti r%d %d %d\n", inf->carr->id, args[2], args[0], args[1]);
-		ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", args[0], args[1], args[0] + args[1], inf->carr->pos - g_mem + ((args[0] + args[1]) % IDX_MOD));
+		ft_printf("P %4d | sti r%d %d %d\n", inf->carr->id,
+			args[2], args[0], args[1]);
+		ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n",
+			args[0], args[1], args[0] + args[1],
+			inf->carr->pos - g_mem + ((args[0] + args[1]) % IDX_MOD));
 	}
 	byte = byte_swap32(inf->carr->regs[args[2]]);
 	mem_add(inf->carr->pos, (args[0] + args[1]) % IDX_MOD, &byte, 4);
