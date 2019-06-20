@@ -30,7 +30,7 @@
 
 # Executables
 *.exe
-*.out
+*.g_out
 *.app
 *.i*86
 *.x86_64
@@ -50,3 +50,14 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#my
+.DS_Store
+cmake*
+*.txt
+gen*
+file*
+.idea
+vm_champs
+*.s
+*.cor
