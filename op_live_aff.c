@@ -6,7 +6,7 @@
 /*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 15:20:41 by amazhara          #+#    #+#             */
-/*   Updated: 2019/06/20 16:32:26 by amazhara         ###   ########.fr       */
+/*   Updated: 2019/06/20 21:15:24 by amazhara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	live(t_op_inf *inf)
 	g_lives_count++;
 	if (g_vl & s_operations)
 		ft_printf("P %4d | live %d\n", inf->carr->id, data);
+	if (g_vis)
+	{
+		g_b[mem_pos(inf->carr->pos - g_mem)].live = 50;
+		g_b[mem_pos(inf->carr->pos - g_mem)].color = -inf->carr->champ_id;
+	}
 	if (data <= -1 && data >= -g_champs_count)
 	{
 		g_last_live = g_champs[-data - 1];

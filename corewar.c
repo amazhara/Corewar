@@ -6,17 +6,24 @@
 /*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 15:48:35 by amazhara          #+#    #+#             */
-/*   Updated: 2019/06/20 17:10:26 by amazhara         ###   ########.fr       */
+/*   Updated: 2019/06/20 21:36:22 by amazhara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-int			g_delete_count;
-int			g_check_time;
-
 void	end_game(void)
 {
+	if (g_vis)
+	{
+		wattron(g_wis.win, COLOR_PAIR(g_last_live->id) | A_BOLD);
+		mvwprintw(g_wis.win, 30, 215, "Winner is %s!\n", g_last_live->name);
+		wattroff(g_wis.win, COLOR_PAIR(g_last_live->id) | A_BOLD);
+		wrefresh(g_wis.win);
+		getchar();
+		endwin();
+	}
+	else
 	ft_printf("Contestant %d, \"%s\", has won !\n", g_last_live->id,
 		g_last_live->name);
 //	system("leaks -q Corewar");

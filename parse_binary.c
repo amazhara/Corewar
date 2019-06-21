@@ -38,7 +38,7 @@ int			byte_swap32(uint32_t number)
 	return (res);
 }
 
-uint		byte_get(void *src, size_t size)
+uint		byte_get(void *src, int size)
 {
 	uint	res;
 	int		skip;

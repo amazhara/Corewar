@@ -6,7 +6,7 @@
 /*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 15:48:56 by amazhara          #+#    #+#             */
-/*   Updated: 2019/06/20 17:32:24 by amazhara         ###   ########.fr       */
+/*   Updated: 2019/06/20 21:20:24 by amazhara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "my_printf/includes/ft_printf.h"
 # include "op.h"
+# include "vis.h"
 
 typedef struct s_op					t_op;
 typedef struct s_op_inf				t_op_inf;
@@ -90,7 +91,9 @@ enum				e_verbosity_levels
 };
 
 void				error(char *line);
-void				parse(int ac, char **av);
+void				check(void);
+void				code_execute(t_carrier *carr);
+void parse(char **av);
 int					byte_swap32(uint32_t number);
 t_carrier			*carrier_place(int champ_id, unsigned char *pos);
 void				carrier_current_code(t_carrier *carr);
@@ -101,7 +104,7 @@ void				mem_add(unsigned char *carr_pos, int pos
 void				main_cycle(void);
 void				take_op_arg_types(t_op_inf *inf, t_carrier *carr);
 void				take_skip_size(t_op_inf *inf, t_carrier *carr);
-uint				byte_get(void *src, size_t size);
+uint				byte_get(void *src, int size);
 int					byte_option_arg(t_arg_type arg_type);
 int					operation_type(t_op_inf *inf, int ind
 , int args_num, int dir_size);
@@ -150,6 +153,8 @@ int					g_checks_count;
 int					g_vis;
 int					g_a;
 t_vl				g_vl;
+int					g_delete_count;
+int					g_check_time;
 unsigned char		g_mem[MEM_SIZE];
 
 static t_op			g_op_tab[] =

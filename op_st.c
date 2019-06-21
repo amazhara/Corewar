@@ -6,7 +6,7 @@
 /*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 15:20:41 by amazhara          #+#    #+#             */
-/*   Updated: 2019/06/20 16:33:25 by amazhara         ###   ########.fr       */
+/*   Updated: 2019/06/20 21:15:02 by amazhara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void	st(t_op_inf *inf)
 	{
 		byte = byte_swap32(inf->carr->regs[reg_id]);
 		mem_add(inf->carr->pos, arg_2 % IDX_MOD, &byte, 4);
+		if (g_vis)
+			bold_color(inf->carr->pos,
+				mem_pos(arg_2 % IDX_MOD), -inf->carr->champ_id, 4);
 	}
 	if (g_vl & (uint)s_operations)
 		ft_printf("P %4d | st r%d %hd\n", inf->carr->id, reg_id, arg_2);
@@ -74,4 +77,7 @@ void	sti(t_op_inf *inf)
 	}
 	byte = byte_swap32(inf->carr->regs[args[2]]);
 	mem_add(inf->carr->pos, (args[0] + args[1]) % IDX_MOD, &byte, 4);
+	if (g_vis)
+		bold_color(inf->carr->pos,
+			mem_pos((args[0] + args[1]) % IDX_MOD), -inf->carr->champ_id, 4);
 }

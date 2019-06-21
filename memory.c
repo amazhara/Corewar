@@ -6,7 +6,7 @@
 /*   By: amazhara <amazhara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 15:20:41 by amazhara          #+#    #+#             */
-/*   Updated: 2019/06/20 16:22:17 by amazhara         ###   ########.fr       */
+/*   Updated: 2019/06/20 21:40:58 by amazhara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	mem_init(void)
 		mem_add(g_mem, pos, g_champs[i]->code, g_champs[i]->code_size);
 		array_push(g_carriers, carrier_place(i + 1, g_mem + pos));
 		g_carriers->carr[i]->regs[1] = -g_champs[i]->id;
+		if (g_vis)
+			init_color_map(pos, i + 1, g_champs[i]->code_size);
 		pos += MEM_SIZE / g_champs_count;
 	}
 	g_last_live = g_champs[g_champs_count - 1];

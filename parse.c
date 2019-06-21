@@ -71,7 +71,7 @@ void		champ_parse(char **av, int i)
 	champ_add(champ_read(av[i]), n_i);
 }
 
-void		parse(int ac, char **av)
+void parse(char **av)
 {
 	int		i;
 
@@ -94,7 +94,7 @@ void		parse(int ac, char **av)
 		if (g_champs_count > MAX_PLAYERS)
 			error("To much champions");
 	}
-	g_champs_count < g_id_big ? error("Unnecessary -n index") : 0;
+	g_champs_count < g_id_big ? error("Wrong champions number") : 0;
 	if (g_vis)
 		vis_case();
 }
